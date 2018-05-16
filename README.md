@@ -85,9 +85,9 @@ To train the model, I used a batch size of 128 and 20 epocs. Used `sklearn's` sh
 I made many tweaks to get to the final network. First I was playing with the LeNet. Tweaks to learning rate, dropout and then extra layers and filter depth.
 
 My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
+* training set accuracy of 100.0%
+* validation set accuracy of 96.0% 
+* test set accuracy of 94.6%
 
 ### Test a Model on New Images
 
