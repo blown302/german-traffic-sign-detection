@@ -43,9 +43,23 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 
 ![alt text][image1]
 
+### Pre-Processing
+
+At first I tried to use one of the normaalization methods in the provided in the course content: `(X_train - 128) / 128`. I tried this but actually gave me worse results. Instead in my network I use tensorflows very own `per_image_standarization`.  There was no need to resize or crop the image because this had already been done by the provider of the dataset. 
+
 ### Design and Test a Model Architecture
 
-I started out with the LeNet architecture we learned in a preview exercise. Knowing that the images at a minimum needed to be normalized I used a standard normalization tensor from tensorlfow: [per_image_standardization](https://www.tensorflow.org/api_docs/python/tf/image/per_image_standardization). I did this right in the network.
+I started out with the LeNet architecture we learned in a preview exercise. This offered about 89% validation accuracy. 
+
+Next, I played with learning rete and number of epocs. When lowering my learning rate and raising epocs it seemed bump my validation accuracy into the lower 90s. In the end this didn't seem to be a big factor. I ended up resetting my learning rate to `.001` and bumping the epocs from the default `LeNet` value of 10 to `20`.
+
+Next, I tried playing with the regularization to prevent overfitting. LetNet already had some older tactics with `MaxPooling`. First, I added a dropout in my last fully connected layer. This bumped my validation accuracy up to the 93 range. When I tried added dropout to the other layers including conv layers with `.2` keep_prob accuracy seemed to decrease. So I removed those.
+
+Lastly, I decided to add another convolution to the network. This bumped my accuracy into the 95-96 range.
+
+Knowing that the images at a minimum needed to be normalized I used a standard normalization tensor from tensorlfow: [per_image_standardization](https://www.tensorflow.org/api_docs/python/tf/image/per_image_standardization). I did this right in the network as stated above.
+
+
 
 I played around with the default LeNet architecture but had to make the network a bit deeper so I added another convolutional layer and added a dropout at very end of the network. I was trying to add more dropouts at different layers but did not seem to be as effective. 
 
