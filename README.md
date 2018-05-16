@@ -57,11 +57,9 @@ Next, I tried playing with the regularization to prevent overfitting. LetNet alr
 
 Lastly, I decided to add another convolution to the network. This bumped my accuracy into the 95-96 range.
 
+Also, as stated above:
+
 Knowing that the images at a minimum needed to be normalized I used a standard normalization tensor from tensorlfow: [per_image_standardization](https://www.tensorflow.org/api_docs/python/tf/image/per_image_standardization). I did this right in the network as stated above.
-
-
-
-I played around with the default LeNet architecture but had to make the network a bit deeper so I added another convolutional layer and added a dropout at very end of the network. I was trying to add more dropouts at different layers but did not seem to be as effective. 
 
 ### My final model consisted of the following layers:
 
